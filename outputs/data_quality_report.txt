@@ -1,0 +1,39 @@
+RETAIL SALES DATA QUALITY REPORT
+==================================================
+
+Original Rows:                    51,290
+Cleaned Rows:                     51,290
+Star Schema Fact Rows:            51,290
+Removed Rows:                     0
+
+DATA QUALITY CHECKS
+--------------------------------------------------
+Missing Postal Codes (Non-US):    41,296
+Missing Values in Other Columns:  0
+Total Missing Values:             41,296
+Exact Duplicate Rows:             0
+Repeated Order+Product Pairs:     38 (split order lines retained)
+Invalid Dates:                    0
+Invalid Sales Values:             0
+Non-positive Sales Values:        0
+Invalid Quantity Values:          0
+Non-positive Quantity Values:     0
+
+BUSINESS DATA
+--------------------------------------------------
+Unique Products (Names):          3,788
+Unique Customers:                 1,590
+Unique Orders:                    25,035
+
+SALES ACCURACY & RECONCILIATION
+--------------------------------------------------
+Original Total Sales:             12,642,501.91
+Cleaned Total Sales:              12,642,501.91
+Star Schema Fact Total Sales:     12,642,501.91
+CSV vs Cleaned Difference:        0.0000%
+CSV vs Star Schema Difference:    0.0000%
+Accuracy Status (<= 0.1%):        PASSED
+
+OVERALL DATA QUALITY STATUS:      PASSED
+
+END OF REPORT

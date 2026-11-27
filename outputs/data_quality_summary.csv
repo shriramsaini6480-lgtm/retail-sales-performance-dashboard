@@ -1,0 +1,25 @@
+Quality Check,Result
+Original Rows,51290
+Cleaned Rows,51290
+Star Schema Fact Rows,51290
+Removed Rows,0
+Missing Postal Codes (Non-US),41296
+Missing Values in Other Columns,0
+Total Missing Values,41296
+Exact Duplicate Rows,0
+Repeated Order+Product Line Pairs,38
+Invalid Dates,0
+Invalid Sales Values,0
+Non-positive Sales Values,0
+Invalid Quantity Values,0
+Non-positive Quantity Values,0
+Unique Products,3788
+Unique Customers,1590
+Unique Orders,25035
+Original Total Sales,12642501.91
+Cleaned Total Sales,12642501.91
+Star Schema Total Sales,12642501.91
+Sales Difference Percentage,0.0
+Star Schema Difference Percentage,0.0
+Sales Accuracy Status,PASSED
+Overall Data Quality Status,PASSED

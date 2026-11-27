@@ -1,0 +1,79 @@
+-- ============================================================================
+-- Project 1: Retail Sales Performance Dashboard
+-- File: powerbi/measures.dax
+-- Purpose: Industry-grade DAX measures for Power BI KPI cards, trends, and slicers
+-- ============================================================================
+
+-- 1. Core KPIs (At least 5 KPI cards required; 8 provided)
+Total Sales =
+SUM ( fact_sales[sales_amount] )
+
+Total Profit =
+SUM ( fact_sales[profit] )
+
+Profit Margin % =
+DIVIDE ( [Total Profit], [Total Sales], 0 )
+
+Total Orders =
+DISTINCTCOUNT ( fact_sales[order_id] )
+
+Unique Customers =
+DISTINCTCOUNT ( fact_sales[customer_id] )
+
+Total Units Sold =
+SUM ( fact_sales[quantity] )
+
+Average Order Value =
+DIVIDE ( [Total Sales], [Total Orders], 0 )
+
+Total Shipping Cost =
+SUM ( fact_sales[shipping_cost] )
+
+-- 2. Time Intelligence & Trend Measures
+Sales PM =
+CALCULATE ( [Total Sales], PREVIOUSMONTH ( dim_date[full_date] ) )
+
+Sales MoM Growth % =
+DIVIDE ( [Total Sales] - [Sales PM], [Sales PM], 0 )
+
+Sales YTD =
+TOTALYTD ( [Total Sales], dim_date[full_date] )
+
+Sales PY =
+CALCULATE ( [Total Sales], SAMEPERIODLASTYEAR ( dim_date[full_date] ) )
+
+Sales YoY Growth % =
+DIVIDE ( [Total Sales] - [Sales PY], [Sales PY], 0 )
+
+Running Total Sales =
+CALCULATE (
+    [Total Sales],
+    FILTER (
+        ALLSELECTED ( dim_date[full_date] ),
+        dim_date[full_date] <= MAX ( dim_date[full_date] )
+    )
+)
+
+-- 3. Ranking & Share Measures (Top 10 Products & Regional Share)
+Product Sales Rank =
+RANKX (
+    ALLSELECTED ( dim_product[product_name] ),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+
+Top 10 Products Sales =
+IF ( [Product Sales Rank] <= 10, [Total Sales], BLANK () )
+
+Regional Sales Share % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLSELECTED ( dim_geography ) ),
+    0
+)
+
+-- 4. Reconciliation Measure
+Fact Row Count =
+COUNTROWS ( fact_sales )

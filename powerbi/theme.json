@@ -1,0 +1,26 @@
+{
+  "name": "Retail Executive Theme",
+  "dataColors": [
+    "#1B4F72",
+    "#2E86C1",
+    "#17A589",
+    "#D4AC0D",
+    "#CA6F1E",
+    "#884EA0",
+    "#566573"
+  ],
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#1B4F72",
+  "good": "#17A589",
+  "neutral": "#D4AC0D",
+  "bad": "#C0392B",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "border": [{ "show": true, "color": { "solid": { "color": "#E2E8F0" } }, "radius": 8 }],
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } } }]
+      }
+    }
+  }
+}
